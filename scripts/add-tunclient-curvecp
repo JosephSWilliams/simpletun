@@ -22,7 +22,9 @@ ln -s `pwd`/tunclient /services/tunclient-curvecp-$3/tunclient
 ln -s `pwd`/run.tunclient-curvecp /services/tunclient-curvecp-$3/run
 
 curvecpmakekey /services/tunclient-curvecp-$3/curvecp
-printf \
-"PUBKEY: `curvecpprintkey /services/tunclient-curvecp-$3/curvecp`\n"
+find /services/tunclient-curvecp-$3/curvecp -type d -exec chmod 700 {} \;
+find /services/tunclient-curvecp-$3/curvecp -type f -exec chmod 600 {} \;
+chmod 700 /services/tunclient-curvecp-$3/curvecp
+printf "CURVECPCLIENTPUBKEY: `curvecpprintkey /services/tunclient-curvecp-$3/curvecp`\n"
 
 test -L /service/tunclient-curvecp-$3 || ln -s /services/tunclient-curvecp-$3 /service/tunclient-curvecp-$3
