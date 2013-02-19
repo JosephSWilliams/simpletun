@@ -10,4 +10,4 @@ export PTP=`cat env/PTP`
   ip link set dev $INTERFACE up
   ping -c 1 -I $INTERFACE $PTP -r -w 5
 ) &
-exec curvecpserver -c 1 `cat env/SERVER` curvecp `cat env/IP` `cat env/PORT` `cat env/EXTENSION` curvecpmessage ./curvecpclientauth `cat env/CURVECPCLIENTPUBKEY` ./tun $INTERFACE ./tunserver
+exec curvecpserver -c 2 `cat env/SERVER` curvecp `cat env/IP` `cat env/PORT` `cat env/EXTENSION` curvecpmessage ./curvecpclientauth `cat env/CURVECPCLIENTPUBKEY` ./tun $INTERFACE ./tunserver
