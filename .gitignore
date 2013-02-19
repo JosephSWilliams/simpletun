@@ -3,5 +3,7 @@ curvecpclientauth
 tunserver
 tunclient
 tun
+
+nacl-*/
 conf/
 
