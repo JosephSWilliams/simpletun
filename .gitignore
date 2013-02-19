@@ -1,9 +1,9 @@
 ucspi-socks4aclient
 curvecpclientauth
+sendpasswd
+recvpasswd
 tunserver
 tunclient
 tun
-
 nacl-*/
 conf/
-

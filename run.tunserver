@@ -1,2 +1,2 @@
 #!/bin/sh -e
-exec tcpserver -c 1 -H -R -l `cat env/IP` `cat env/IP` `cat env/PORT` ./ifup-server.sh
+exec tcpserver -c 1 -H -R -l `cat env/IP` `cat env/IP` `cat env/PORT` ./recvpasswd `cat env/PASSWD` ./ifup-server.sh

@@ -1,2 +1,2 @@
 #!/bin/sh -e
-exec tcpclient 127.0.0.1 9050 ./ucspi-socks4aclient `cat env/IP` `cat env/PORT` ./ifup-client.sh
+exec tcpclient 127.0.0.1 9050 ./ucspi-socks4aclient `cat env/IP` `cat env/PORT` ./sendpasswd `cat env/PASSWD` ./ifup-client.sh

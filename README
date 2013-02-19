@@ -42,6 +42,10 @@ usage:
     remote tun inet addr
     ie: 1.2.3.4
 
+  env/PASSWD:
+    connect passwd for clearnet and tor tunnels
+    ie: pipethroughsha512?
+
   env/SERVER:
     curvecpserver name
     ie: simple.tun.server

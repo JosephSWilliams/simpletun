@@ -1,2 +1,2 @@
 #!/bin/sh -e
-exec tcpclient `cat env/IP` `cat env/PORT` ./ifup-client.sh
+exec tcpclient `cat env/IP` `cat env/PORT` ./sendpasswd `cat env/PASSWD` ./ifup-client.sh
