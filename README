@@ -1,0 +1,59 @@
+simpletun:
+  simple client/server suite for networking
+  tunnel interfaces.
+
+depends:
+  daemontools, ucspi-tcp, gcc, sh
+
+install:
+  ./install-nacl.sh
+  make
+
+todo:
+  initial commit (expect changes),
+  add/verify tun/tap support for various
+  operating systems. (if you're on mac or
+  windows, don't hold your breath)
+
+usage:
+  ls scripts/ # all the hard work is done here
+
+  env/IP:
+    remote/local ip for bind/connect
+    ie: 127.0.0.1
+
+  env/PORT:
+    remote/local port for bind/connect
+    ie: 1234
+
+  env/INTERFACE:
+    local tun interface name
+    ie: tun0
+
+  env/TUN_ADDR: 
+    local tun inet addr
+    ie: 1.0.1.2
+
+  env/GATEWAY:
+    local tun gateway
+    ie: 1.0.1.1
+
+  env/PTP:
+    remote tun inet addr
+    ie: 1.2.3.4
+
+  env/SERVER:
+    curvecpserver name
+    ie: simple.tun.server
+
+  env/EXTENSION:
+    curvecpserver extention
+    ie: 12345678123456781234567812345678
+
+  env/CURVECPSERVERPUBKEY:
+    curvecpserver pubkey
+    ie: 1234567812345678123456781234567812345678123456781234567812345678
+
+  env/CURVECPCLIENTPUBKEY:
+    curvecpclient pubkey
+    ie: 1234567812345678123456781234567812345678123456781234567812345678

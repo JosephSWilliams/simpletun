@@ -1,0 +1,29 @@
+#!/bin/sh -e
+
+[ -z $9 ] && \
+  echo $0': <ip> <port> <iface> <tun_addr> <gateway> <ptp> <server> <extension> <curvecpclientpubkey>' 1>&2 && \
+  exit 64
+
+mkdir -p /services/tunserver-curvecp-$3 || exit 255
+mkdir -p /services/tunserver-curvecp-$3/env || exit 255
+
+echo $1 > /services/tunserver-curvecp-$3/env/IP || exit 255
+echo $2 > /services/tunserver-curvecp-$3/env/PORT || exit 255
+echo $3 > /services/tunserver-curvecp-$3/env/INTERFACE || exit 255
+echo $4 > /services/tunserver-curvecp-$3/env/TUN_ADDR || exit 255
+echo $5 > /services/tunserver-curvecp-$3/env/GATEWAY || exit 255
+echo $6 > /services/tunserver-curvecp-$3/env/PTP || exit 255
+echo $7 > /services/tunserver-curvecp-$3/env/SERVER || exit 255
+echo $8 > /services/tunserver-curvecp-$3/env/EXTENSION || exit 255
+echo $9 > /services/tunclient-curvecp-$3/env/CURVECPCLIENTPUBKEY || exit 255
+
+ln -s `pwd`/tun /services/tunserver-curvecp-$3/tun
+ln -s `pwd`/tunserver /services/tunserver-curvecp-$3/tunserver
+ln -s `pwd`/curvecpclientauth /services/tunserver-curvecp-$3/curvecpclientauth
+ln -s `pwd`/tun.tunserver-curvecp /services/tunserver-curvecp-$3/run
+
+curvecpmakekey /services/tunserver-curvecp-$3/curvecp
+printf \
+"PUBKEY: `curvecpprintkey /services/tunserver-curvecp-$3/curvecp`\n"
+
+test -L /service/tunserver-curvecp-$3 || ln -s /services/tunserver-curvecp-$3 /service/tunserver-curvecp-$3
