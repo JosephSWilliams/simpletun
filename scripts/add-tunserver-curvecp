@@ -18,9 +18,10 @@ echo $8 > /services/tunserver-curvecp-$3/env/EXTENSION || exit 255
 echo $9 > /services/tunclient-curvecp-$3/env/CURVECPCLIENTPUBKEY || exit 255
 
 ln -s `pwd`/tun /services/tunserver-curvecp-$3/tun
+ln -s `pwd`/ifup.sh /services/tunserver-curvecp-$3/ifup.sh
 ln -s `pwd`/tunserver /services/tunserver-curvecp-$3/tunserver
-ln -s `pwd`/curvecpclientauth /services/tunserver-curvecp-$3/curvecpclientauth
 ln -s `pwd`/run.tunserver-curvecp /services/tunserver-curvecp-$3/run
+ln -s `pwd`/curvecpclientauth /services/tunserver-curvecp-$3/curvecpclientauth
 
 curvecpmakekey /services/tunserver-curvecp-$3/curvecp
 find /services/tunserver-curvecp-$3/curvecp -type d -exec chmod 700 {} \;
