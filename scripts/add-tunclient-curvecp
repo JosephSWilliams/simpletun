@@ -20,6 +20,7 @@ echo $9 > /services/tunclient-curvecp-$3/env/CURVECPSERVERPUBKEY || exit 255
 ln -s `pwd`/tun /services/tunclient-curvecp-$3/tun
 ln -s `pwd`/tunclient /services/tunclient-curvecp-$3/tunclient
 ln -s `pwd`/run.tunclient-curvecp /services/tunclient-curvecp-$3/run
+ln -s `pwd`/ifup-client.sh /services/tunclient-curvecp-$3/ifup-client.sh
 
 curvecpmakekey /services/tunclient-curvecp-$3/curvecp
 find /services/tunclient-curvecp-$3/curvecp -type d -exec chmod 700 {} \;

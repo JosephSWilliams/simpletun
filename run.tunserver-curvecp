@@ -1,2 +1,2 @@
 #!/bin/sh -e
-exec curvecpserver -c 2 `cat env/SERVER` curvecp `cat env/IP` `cat env/PORT` `cat env/EXTENSION` curvecpmessage ./curvecpclientauth `cat env/CURVECPCLIENTPUBKEY` ./ifup.sh
+exec curvecpserver -c 2 `cat env/SERVER` curvecp `cat env/IP` `cat env/PORT` `cat env/EXTENSION` curvecpmessage ./curvecpclientauth `cat env/CURVECPCLIENTPUBKEY` ./ifup-server.sh

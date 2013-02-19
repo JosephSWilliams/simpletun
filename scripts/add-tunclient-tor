@@ -17,6 +17,7 @@ echo $6 > /services/tunclient-tor-$3/env/PTP || exit 255
 ln -s `pwd`/tun /services/tunclient-tor-$3/tun
 ln -s `pwd`/tunclient /services/tunclient-tor-$3/tunclient
 ln -s `pwd`/run.tunclient-tor /services/tunclient-tor-$3/run
+ln -s `pwd`/ifup-client.sh /services/tunclient-tor-$3/ifup-client.sh
 ln -s `pwd`/ucspi-socks4aclient /services/tunclient-tor-$3/ucspi-socks4aclient
 
 test -L /service/tunclient-tor-$3 || ln -s /services/tunclient-tor-$3 /service/tunclient-tor-$3
