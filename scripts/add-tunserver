@@ -16,6 +16,6 @@ echo $6 > /services/tunserver-$3/env/PTP || exit 255
 
 ln -s `pwd`/tun /services/tunserver-$3/tun
 ln -s `pwd`/tunserver /services/tunserver-$3/tunserver
-ln -s `pwd`/tun.tunserver /services/tunserver-$3/run
+ln -s `pwd`/run.tunserver /services/tunserver-$3/run
 
 test -L /service/tunserver-$3 || ln -s /services/tunserver-$3 /service/tunserver-$3
