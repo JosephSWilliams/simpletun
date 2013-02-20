@@ -4,7 +4,7 @@ int main(){
 
 fcntl(6,4,2050);
 fcntl(7,4,2050);
-fcntl(3,4,2050);
+//fcntl(3,4,2050);
 
 struct pollfd fds[4];
 fds[0].fd = 6;
