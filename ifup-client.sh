@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh
 export INTERFACE=`cat env/INTERFACE`
 export TUN_ADDR=`cat env/TUN_ADDR`
 export GATEWAY=`cat env/GATEWAY`
