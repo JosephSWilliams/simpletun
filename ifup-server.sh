@@ -12,5 +12,4 @@ ip link del $INTERFACE
   ifconfig $INTERFACE mtu 1024
   #ping -c 1 -I $INTERFACE $PTP -r -w 5
 ) &
-echo $$ > pid # crude hack
 exec ./tun $INTERFACE ./tunserver
