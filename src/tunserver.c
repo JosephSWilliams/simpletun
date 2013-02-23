@@ -2,10 +2,9 @@
 #include <poll.h>
 main(){
 
-struct timezone *UTC = (struct timezone *)0;
-struct timeval now, then; /* keepalive hack: upstream should consider */
-gettimeofday(&then, UTC); /* a flag for longterm connections with     */
-                          /* considerable periods of silence.         */
+struct timezone *UTC = (struct timezone *)0; /* keepalive hack: upstream should consider */
+struct timeval ping, pong, last, seen; /* a flag for longterm connections with */
+gettimeofday(&ping,UTC); last=ping; /* considerable periods of silence. */
 
 struct pollfd fds[2]; /* POLLIN | POLLPRI */
 fds[0].fd=0; fds[0].events=3; fds[0].revents=3;
@@ -16,9 +15,11 @@ int i=0, n=0, len=0;
 
 while (1){
 
-  gettimeofday(&now,UTC);
-  if (now.tv_sec-then.tv_sec>16){
-    gettimeofday(&then,UTC); write(1,"\x00\x00",2);}
+  gettimeofday(&seen,UTC); /* die: lost client */
+  if (seen.tv_sec-last.tv_sec>128) exit(0);
+
+  pong=seen;
+  if (pong.tv_sec-ping.tv_sec>32){ ping=pong; write(1,"\x00\x00",2); }
 
   if (poll(&fds[0],1,256)>0){
     len=read(0,p,2);
@@ -31,11 +32,12 @@ while (1){
         i=read(0,&p[n],len-n);
         if (i<1) exit(3);
         n+=i;}
-      write(3,p,len);}}
+      write(3,p,len);}
+    last=seen;}
 
   if (poll(&fds[1],1,256)>0){
     len=read(3,&p[2],1500);
     if (0>len) exit(4);
     p[0]=len/256; p[1]=len%256;
     write(1,p,2+len);
-    gettimeofday(&then,UTC);}}}
+    ping=pong;}}}
