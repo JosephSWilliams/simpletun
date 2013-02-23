@@ -2,9 +2,10 @@
 #include <poll.h>
 main(){
 
-struct timezone *UTC = 0; /* keepalive hack: upstream should consider */
-struct timeval now, then; /* a flag for longterm connections with     */
-gettimeofday(&then,&UTC); /* considerable periods of silence.         */
+struct timezone *UTC = (struct timezone *)0;
+struct timeval now, then; /* keepalive hack: upstream should consider */
+gettimeofday(&then, UTC); /* a flag for longterm connections with     */
+                          /* considerable periods of silence.         */
 
 struct pollfd fds[2]; /* POLLIN | POLLPRI */
 fds[0].fd=6; fds[0].events=3; fds[0].revents=3;
@@ -15,9 +16,9 @@ int i=0, n=0, len=0;
 
 while (1){
 
-  gettimeofday(&now,&UTC);
+  gettimeofday(&now,UTC);
   if (now.tv_sec-then.tv_sec>16){
-    gettimeofday(&then,&UTC); write(7,"\x00\x00",2);}
+    gettimeofday(&then,UTC); write(7,"\x00\x00",2);}
 
   if (poll(&fds[0],1,256)>0){
     len=read(6,p,2);
@@ -37,4 +38,4 @@ while (1){
     if (0>len) exit(4);
     p[0]=len/256; p[1]=len%256;
     write(7,p,2+len);
-    gettimeofday(&then,&UTC);}}}
+    gettimeofday(&then,UTC);}}}
