@@ -12,7 +12,7 @@ if ((argc>2)&&(strlen(argv[1])>0)&&(strlen(argv[1])<17)){
     struct ifreq ifr;
     memset(&ifr,0,sizeof(ifr));
     strcpy(ifr.ifr_name,argv[1]);
-    ifr.ifr_flags = IFF_TUN;
+    ifr.ifr_flags = IFF_TUN | IFF_NO_PI;
     if (ioctl(3,TUNSETIFF,(void *)&ifr)<0) exit(255);
   #else
     char ifr_name[5+16];
