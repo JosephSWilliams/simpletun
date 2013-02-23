@@ -15,6 +15,8 @@ echo $5 > /services/tunclient-$3/env/GATEWAY || exit 255
 echo $6 > /services/tunclient-$3/env/PTP || exit 255
 echo $7 > /services/tunclient-$3/env/PASSWD || exit 255
 
+chmod 700 /services/tunclient-$3/env/ || exit 255
+
 ln -s `pwd`/tun /services/tunclient-$3/tun
 ln -s `pwd`/run.tunclient /services/tunclient-$3/run
 ln -s `pwd`/tunclient /services/tunclient-$3/tunclient

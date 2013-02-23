@@ -17,6 +17,8 @@ echo $7 > /services/tunserver-curvecp-$3/env/SERVER || exit 255
 echo $8 > /services/tunserver-curvecp-$3/env/EXTENSION || exit 255
 echo $9 > /services/tunserver-curvecp-$3/env/CURVECPCLIENTPUBKEY || exit 255
 
+chmod 700 /services/tunserver-curvecp-$3/env/ || exit 255
+
 ln -s `pwd`/tun /services/tunserver-curvecp-$3/tun
 ln -s `pwd`/tunserver /services/tunserver-curvecp-$3/tunserver
 ln -s `pwd`/run.tunserver-curvecp /services/tunserver-curvecp-$3/run
