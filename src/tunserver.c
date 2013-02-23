@@ -18,7 +18,12 @@ int i=0, n=0, len=0;
 
 while (1){
 
+  /* keepalive hack: upstream should consider */
+  /* a flag for longterm connections with     */
+  /* considerable periods of silence.         */
+
   gettimeofday(&now,(struct timezone *)0);
+
   if (now.tv_sec-then.tv_sec>16){
     gettimeofday(&then,(struct timezone *)0);
     write(1,"\x00\x00",2);}
