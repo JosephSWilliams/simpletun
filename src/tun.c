@@ -19,10 +19,10 @@ if ((argc>2)&&(strlen(argv[1])>0)&&(strlen(argv[1])<17)){
     memmove(&ifr_name,"/dev/",5);
     memmove(&ifr_name[5],argv[1],strlen(argv[1]));
     if (open(ifr_name,2)!=3) exit(255);
-    int i = IFF_POINTOPOINT | IFF_MULTICAST;
-    if (ioctl(fd, TUNSIFMODE, &i)<0) exit(255);
-    i = 0; if (ioctl(fd, TUNSLMODE, &i) < 0) exit(255);
-    i = 0; if (ioctl(fd, TUNSIFHEAD, &i) < 0) exit(255);
+    int ifr_flag = IFF_POINTOPOINT | IFF_MULTICAST;
+    if (ioctl(fd,TUNSIFMODE,&ifr_flag)<0) exit(255);
+    ifr_flag=0; if (ioctl(fd,TUNSLMODE,&ifr_flag)<0) exit(255);
+    ifr_flag=0; if (ioctl(fd,TUNSIFHEAD,&ifr_flag)<0) exit(255);
   #endif
   execvp(argv[2],argv+2);}
 write(2,USAGE,strlen(USAGE));
