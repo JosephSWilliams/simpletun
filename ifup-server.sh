@@ -3,9 +3,6 @@ export INTERFACE=`cat env/INTERFACE`
 export TUN_ADDR=`cat env/TUN_ADDR`
 export GATEWAY=`cat env/GATEWAY`
 export PTP=`cat env/PTP`
-
-kill `cat pid`
-
 (
   sleep 4
   ip addr add $TUN_ADDR peer $PTP/32 dev $INTERFACE scope link
@@ -15,7 +12,4 @@ kill `cat pid`
   #ping -c 1 -I $INTERFACE $PTP -r -w 5
 
 ) &
-
-echo $$ > pid
-
 exec ./tun $INTERFACE ./tunserver
