@@ -11,4 +11,6 @@ export PTP=`cat env/PTP`
   ifconfig $INTERFACE mtu 1024
   #ping -c 1 -I $INTERFACE $PTP -r -w 5
 ) &
+kill `cat pid`
+echo $$ > pid
 exec ./tun $INTERFACE ./tunserver
