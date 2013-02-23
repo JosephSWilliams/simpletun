@@ -1,2 +1,3 @@
-#!/bin/sh -e
+#!/bin/sh
+kill `cat pid`
 exec curvecpserver -c 2 `cat env/SERVER` curvecp `cat env/IP` `cat env/PORT` `cat env/EXTENSION` curvecpmessage ./curvecpclientauth `cat env/CURVECPCLIENTPUBKEY` ./ifup-server.sh
