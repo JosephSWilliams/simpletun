@@ -1,4 +1,5 @@
 #define USAGE "Usage: curvecpclientauth CURVECPCLIENTPUBKEY prog [args]\n"
+#include <stdlib.h>
 int main(int argc, char **argv){
 if ((argc>2)&&(strlen(argv[1])>=64)){
   if (!getenv("CURVECPCLIENTPUBKEY")) exit(64);
