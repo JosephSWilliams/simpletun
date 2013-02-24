@@ -22,7 +22,7 @@ while (1){
   if (seen.tv_sec-last.tv_sec>128) exit(0);
 
   pong=seen;
-  if (pong.tv_sec-ping.tv_sec>32){ ping=pong; write(7,"\x00\x00",2); }
+  if (pong.tv_sec-ping.tv_sec>16){ ping=pong; write(7,"\x00\x00",2); }
 
   if (poll(&fds[0],1,256)>0){
     len=read(6,p,2);
