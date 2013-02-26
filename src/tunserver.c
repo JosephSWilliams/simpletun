@@ -35,12 +35,12 @@ while (1){
         i=read(0,&p[n],len-n);
         if (i<1) exit(3);
         n+=i;}
-      write(3,p,len);}
+      if (write(3,p,len)<0) exit(4);}
     last=seen;}
 
   if (poll(&fds[1],1,256)>0){
     len=read(3,&p[2],1500);
-    if (0>len) exit(4);
+    if (0>len) exit(5);
     p[0]=len/256; p[1]=len%256;
-    write(1,p,2+len);
+    if (write(1,p,2+len)<0) exit(6);
     ping=pong;}}}
