@@ -6,7 +6,7 @@ struct timezone *UTC = (struct timezone *)0; /* keepalive hack: upstream should 
 struct timeval ping, pong, last, seen; /* a flag for longterm connections with */
 gettimeofday(&ping,UTC); last=ping; /* considerable periods of silence. */
 
-last.tv_sec-=112; /* don't wait 2 minutes if connection flaps */
+//last.tv_sec-=112; /* don't wait 2 minutes if connection flaps */
 write(1,"\x00\x00",2); /* send keepalive immediately */
 
 struct pollfd fds[2]; /* POLLIN | POLLPRI */
