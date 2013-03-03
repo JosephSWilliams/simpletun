@@ -1,4 +1,4 @@
-#define USAGE "Usage: tun iface prog [args]\n"
+#define USAGE "Usage: tun ifr_name prog [args]\n"
 #ifdef linux
   #include <linux/if_ether.h>
   #include <linux/if_tun.h>
