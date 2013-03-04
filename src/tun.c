@@ -15,7 +15,7 @@ if ((argc>2)&&(strlen(argv[1])>0)&&(strlen(argv[1])<17)){
     ifr.ifr_flags = IFF_TUN | IFF_NO_PI;
     if (ioctl(3,TUNSETIFF,(void *)&ifr)<0) exit(255);
   #else
-    char ifr_name[5+16];
+    char ifr_name[5+16]={0};
     memmove(&ifr_name,"/dev/",5);
     memmove(&ifr_name[5],argv[1],strlen(argv[1]));
     if (open(ifr_name,2)!=3) exit(255);
