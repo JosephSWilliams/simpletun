@@ -1,0 +1,28 @@
+#!/bin/sh -e
+
+[ -z $8 ] && \
+  echo $0': <local ip> <local port> <remote ip> <remote port> <iface> <tun_addr> <gateway> <ptp>' 1>&2 && \
+  exit 64
+
+mkdir -p /services/tunclient-udp-$3 || exit 255
+mkdir -p /services/tunclient-udp-$3/env || exit 255
+
+echo $1 > /services/tunclient-udp-$3/env/LOCALIP || exit 255
+echo $2 > /services/tunclient-udp-$3/env/LOCALPORT || exit 255
+echo $3 > /services/tunclient-udp-$3/env/REMOTEIP || exit 255
+echo $4 > /services/tunclient-udp-$3/env/REMOTEPORT || exit 255
+echo $5 > /services/tunclient-udp-$3/env/INTERFACE || exit 255
+echo $6 > /services/tunclient-udp-$3/env/TUN_ADDR || exit 255
+echo $7 > /services/tunclient-udp-$3/env/GATEWAY || exit 255
+echo $8 > /services/tunclient-udp-$3/env/PTP || exit 255
+#echo $9 > /services/tunclient-udp-$3/env/PASSWD || exit 255
+echo 1024 > /services/tunclient-udp-$3/env/MTU || exit 255
+
+chmod 700 /services/tunclient-udp-$3/env/ || exit 255
+
+ln -s `pwd`/tun /services/tunclient-udp-$3/tun
+ln -s `pwd`/run.tunclient-udp /services/tunclient-udp-$3/run
+ln -s `pwd`/tunclient-udp /services/tunclient-udp-$3/tunclient-udp
+#ln -s `pwd`/sendpasswd /services/tunclient-udp-$3/sendpasswd
+
+test -L /service/tunclient-udp-$3 || ln -s /services/tunclient-udp-$3 /service/tunclient-udp-$3

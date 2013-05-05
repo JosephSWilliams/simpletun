@@ -4,6 +4,7 @@ sendpasswd
 recvpasswd
 tunserver
 tunclient
+tunclient-udp
 tun
 nacl-*/
 conf/
