@@ -1,4 +1,5 @@
 simpletun:
+	gcc src/dh.c -o dh -l nacl
 	gcc src/tun.c -o tun
 	gcc src/tunserver.c -o tunserver
 	gcc src/tunclient.c -o tunclient
