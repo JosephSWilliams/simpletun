@@ -1,6 +1,7 @@
 simpletun:
-	gcc src/dh.c -o dh -l nacl
 	gcc src/tun.c -o tun
+	gcc src/dh.c -o dh -l nacl
+	gcc src/keypair.c -o keypair -l nacl /usr/lib/randombytes.o
 	gcc src/tunserver.c -o tunserver
 	gcc src/tunclient.c -o tunclient
 	gcc src/tunclient-udp.c -o tunclient-udp
