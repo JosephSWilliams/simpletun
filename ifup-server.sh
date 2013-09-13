@@ -4,7 +4,7 @@ export TUN_ADDR=`cat env/TUN_ADDR`
 export GATEWAY=`cat env/GATEWAY`
 export PTP=`cat env/PTP`
 export MTU=`cat env/MTU`
-ip link del $INTERFACE
+#ip link del $INTERFACE
 (
   sleep 4
   if [ -x /sbin/ip ]; then
@@ -17,4 +17,4 @@ ip link del $INTERFACE
     route add -host $PTP -link $INTERFACE -iface &
   fi
 ) &
-exec ./tun $INTERFACE ./tunserver
+exec strace ./tun $INTERFACE ./tunserver
