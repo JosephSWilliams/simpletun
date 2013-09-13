@@ -9,7 +9,7 @@ int main (int argc, char *argv[]) {
   memcpy(passwd0,argv[1],n);
   if (read(0,passwd1,256)<1) exit(32);
   for (i=0;i<256;++i) ret |= (passwd0[i]==passwd1[i]) ? 1 : 0;
-  if (!n) execvp(argv[2],argv+2);
+  if (!ret) execvp(argv[2],argv+2);
  }
  write(2,USAGE,strlen(USAGE));
  exit(64);
