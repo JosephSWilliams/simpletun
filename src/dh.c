@@ -2,7 +2,7 @@
 #include <nacl/crypto_box.h>
 #include <stdlib.h>
 #include <string.h>
-#include <base16.h>
+#include "base16.h"
 
 main(int argc, char *argv[]) {
  unsigned char s[32], p[32], k[32], ret[64];

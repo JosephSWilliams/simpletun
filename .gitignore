@@ -5,6 +5,8 @@ recvpasswd
 tunserver
 tunclient
 tunclient-udp
+keypair
 tun
 nacl-*/
 conf/
+dh
