@@ -17,6 +17,7 @@ todo:
   add/verify tun/tap support for various
   operating systems. (if you're on mac or
   windows, don't hold your breath)
+  fix IPv6 @ FreeBSD
 
 usage:
   ls scripts/ # all the hard work is done here
