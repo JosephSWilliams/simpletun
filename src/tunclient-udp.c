@@ -3,10 +3,13 @@
 #include <sys/fcntl.h>
 #include <strings.h>
 #include <stdlib.h>
+#define _WITH_DPRINTF
 #include <stdio.h>
 #include <poll.h>
+#include <unistd.h>
+#include <arpa/inet.h>
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 
   if (argc<5)

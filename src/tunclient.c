@@ -1,5 +1,7 @@
+#include <stdlib.h>
+#include <unistd.h>
 #include <poll.h>
-main(){
+int main(){
 
 struct pollfd fds[2];
 fds[0].fd=6; fds[0].events=POLLIN|POLLPRI;

@@ -1,6 +1,8 @@
-#define USAGE "Usage: recvpasswd passwd prog [args]\n"
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+
+#define USAGE "Usage: recvpasswd passwd prog [args]\n"
 int main(int argc, char *argv[]) {
  int i, n, ret=0;
  unsigned char passwd0[256]={0};

@@ -1,3 +1,6 @@
+#include <string.h>
+#include <unistd.h>
+
 #define USAGE "Usage: curvecpclientauth CURVECPCLIENTPUBKEY prog [args]\n"
 #include <stdlib.h>
 int main(int argc, char **argv){
