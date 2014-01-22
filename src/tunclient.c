@@ -11,7 +11,7 @@ int main(){
   fds[1].fd=3; fds[1].events=POLLIN|POLLPRI;
 
   int i=0, n=0, len=0;
-  unsigned char p[1502]={0};
+  unsigned char p[1506]={0};
 
   while (1){
     poll(fds,2,-1);
@@ -50,11 +50,11 @@ int main(){
 
     if (fds[1].revents){
       #ifdef __OpenBSD__
-        len=read(3,&p[0],1500);
+        len=read(3,&p[0],1504);
         if (0>len) exit(5);
         len -= 4;
         p[2]=len/256; p[3]=len%256;
-        if (write(7,p+2,2+len)<0) {
+        if (write(7, p + 2, len + 2) < 0) {
           dprintf(2, "could not write %i bytes to socket\n", len);
           perror("reason");
           exit(6);
@@ -65,6 +65,6 @@ int main(){
         p[0]=len/256; p[1]=len%256;
         if (write(7,p,2+len)<0) exit(6);
       #endif
-      }
     }
+  }
 }

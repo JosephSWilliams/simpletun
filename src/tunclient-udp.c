@@ -12,6 +12,10 @@
 int main(int argc, char **argv)
 {
 
+  #ifdef __OpenBSD__
+    dprintf(2, "OpenBSD currently not supported\n");
+    exit(1);
+  #endif
   if (argc<5)
   {
     dprintf(2,"Usage: tunclient-udp addr port remote_addr remote_port\n");
