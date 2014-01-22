@@ -3,11 +3,14 @@ simpletun:
   tunnel interfaces.
 
 depends:
-  daemontools, ucspi-tcp, gcc, sh
+  daemontools, ucspi-tcp, gcc or clang, sh
 
-install:
-  ./install-nacl.sh
+install simpletun:
   make
+
+install keypair:
+  ./install-nacl.sh
+  make keypair
 
 todo:
   initial commit (expect changes),
