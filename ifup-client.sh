@@ -12,8 +12,9 @@ export MTU=`cat env/MTU`
     ip link set dev $INTERFACE up
     ifconfig $INTERFACE mtu $MTU
   else
-    ifconfig $INTERFACE create $TUN_ADDR $PTP netmask 255.255.255.255 mtu $MTU up
-    route add -host $PTP -link $INTERFACE -iface &
+    ifconfig $INTERFACE $TUN_ADDR/32 $PTP mtu $MTU up
+    #route add -host $PTP -link $INTERFACE -iface &
   fi
 ) &
+[ -x /sbin/ip ] || ifconfig $INTERFACE destroy
 exec ./tun $INTERFACE ./tunclient

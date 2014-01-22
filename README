@@ -3,17 +3,21 @@ simpletun:
   tunnel interfaces.
 
 depends:
-  daemontools, ucspi-tcp, gcc, sh
+  daemontools, ucspi-tcp, gcc or clang, sh
 
-install:
-  ./install-nacl.sh
+install simpletun:
   make
+
+install keypair:
+  ./install-nacl.sh
+  make keypair
 
 todo:
   initial commit (expect changes),
   add/verify tun/tap support for various
   operating systems. (if you're on mac or
   windows, don't hold your breath)
+  fix IPv6 @ FreeBSD
 
 usage:
   ls scripts/ # all the hard work is done here

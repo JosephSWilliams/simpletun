@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
 #define USAGE "Usage: ucspi-socks4aclient addr port prog [args]\n"
 int main(int argc, char **argv){
 
