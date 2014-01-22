@@ -4,6 +4,7 @@
 #ifdef __OpenBSD__
   #include <sys/socket.h>
 #endif
+#define _WITH_DPRINTF
 #include <stdio.h>
 int main(){
   struct pollfd fds[2];
