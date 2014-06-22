@@ -22,6 +22,12 @@ todo:
 usage:
   ls scripts/ # all the hard work is done here
 
+  debian daemontools users can pass scripts through sed:
+
+  sed 's|/services|/var/services|g' scripts/$script-name | \
+  sed 's|/service|/var/service|g' | \
+  sh -e
+
   env/IP:
     remote/local ip for bind/connect
     ie: 127.0.0.1
